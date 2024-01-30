@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} {{post.title}} {% endblock %}
+
+
+{% block content %}
+
+<h1>{{post.title}}</h1>
+<h2>{{post.post_date}}</h2>
+<blockquote class="blockquote">
+    <p>{{post.author}}</p>
+  </blockquote>
+
+  <p class="lead">
+    {{post.body}}
+  </p>
+
+
+<br><br/>
+<a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+<a href="{% url 'edit' post.pk %}" class="btn btn-success">Edit Post</a>
+<a href="{% url 'delete' post.pk %}" class="btn btn-danger">Delete</a>
+
+{% endblock %}

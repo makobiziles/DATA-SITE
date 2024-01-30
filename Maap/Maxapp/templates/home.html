@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>POST</h1>
+
+<u1>
+<div class="container"></div>
+{% for post in object_list %}
+
+<br><br/>
+<br><br/>
+<div class="container"></div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Posted by: {{post.author}}--{{post.post_date}}</h6>
+            <p class="card-text">{{post.body}}</p>
+            <a href="{% url 'post' post.pk %}" class="card-link">View Post</a>
+            <a href="{% url 'edit' post.pk %}" class="card-link">Edit Post</a>
+            <a href="{% url 'delete' post.pk %}" class="card-link btn-danger btn-sm">Delete</a>
+        </div>
+    </div>
+{% endfor %}
+</u1>
+{% endblock %}
