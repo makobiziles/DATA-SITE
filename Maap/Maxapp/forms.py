@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Fileupload
 
 
 class PostForm(forms.ModelForm):
@@ -22,3 +22,9 @@ class EditForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'})
         }
+
+
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = Fileupload
+        fields = ('name','cover_image','file','description')

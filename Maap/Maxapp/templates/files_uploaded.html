@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<br></br>
+
+<h1>Files</h1>
+
+<br></br>
+
+    {% for file in files %}
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{file.cover_image}}" alt="{{file.name}}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">{{file.name}}</h5>
+                <p class="card-text">{{file.description}}</p>
+                <a class="btn btn-primary" href="{{file.file.url}}" role="button">Download/View</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

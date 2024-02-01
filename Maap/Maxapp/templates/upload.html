@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Upload</h1>
+<br/>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="document">
+    <br/><br/>
+    <button class="btn btn-success">Upload</button>
+</form>
+
+{% if url %}
+
+<ul class="list-group">
+    <li class="list-group-item enabled" aria-disabled="false">Uploads: </li>
+    <li class="list-group-item"><a href="{{url}}">{{url}}</a></li>
+    
+</ul>
+
+
+<br/><br/>
+    
+{% endif %}
+
+
+
+{% endblock %}

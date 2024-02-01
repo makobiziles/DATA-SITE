@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
-from .forms import PostForm, EditForm
+from .models import Post, Fileupload
+from .forms import PostForm, EditForm, FileForm
 from django.urls import reverse_lazy
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 #def home(request):
@@ -35,3 +36,18 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete.html'
     success_url = reverse_lazy('home')
+
+def files_uploaded(request):
+    files = Fileupload.objects.all()
+    ordering = ['id']
+    return render(request, 'files_uploaded.html', {'files': files})
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = FileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('files')
+    else:
+        form = FileForm()
+    return render(request, 'upload_file.html', {'form': form})

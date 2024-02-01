@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<br><br/>
+<br><br/>
+    <br><br/>
+    <div class="card">
+        <br><br/>
+        <div class="card-header">
+          Upload Files
+        </div>
+            <div class="card-body">
+            
+                <p class="card-text">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button class="btn btn-success">Upload File</button>
+                    </form>
+                </p>
+           
+            </div>
+        </div>
+    </div>
+{% endblock %}  

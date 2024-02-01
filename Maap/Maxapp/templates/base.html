@@ -44,6 +44,12 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'fileupload' %}">Upload File</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'files' %}">File Uploads</a>
+                </li>
             {% else %}
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
@@ -51,9 +57,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
+               
             {% endif %}
             
         
