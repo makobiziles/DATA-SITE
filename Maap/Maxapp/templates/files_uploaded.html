@@ -4,25 +4,37 @@
 <br></br>
 
 <h1>Files</h1>
-
-<br></br>
-
-    {% for file in files %}
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{file.cover_image}}" alt="{{file.name}}">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                <h5 class="card-title">{{file.name}}</h5>
-                <p class="card-text">{{file.description}}</p>
-                <a class="btn btn-primary" href="{{file.file.url}}" role="button">Download/View</a>
-                </div>
-            </div>
-            </div>
-        </div>
-    {% endfor %}
+<p>Files uploaded: {{files.count}} <br></br><a href="{% url 'fileupload' %}" class="btn btn-success btn-sm">Upload File</a> </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>File Image</th>
+            <th>File Description</th>
+            <th>Download</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in files %}
+            <tr>
+                <td>{{file.name}}</td>
+                <td><img src="{{file.cover_image}}" width="100" height="100"></td>
+                <td>{{file.description}}</td>
+                
+                <td>
+                    <a href="{{file.file.url}%}" class="btn btn-success btn-sm">Download/View</a>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'delete_file' file.pk %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                   
+                </td>
+            
+            </tr>
+        {% endfor %}
 
 
 {% endblock %}

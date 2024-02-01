@@ -51,3 +51,16 @@ def upload_file(request):
     else:
         form = FileForm()
     return render(request, 'upload_file.html', {'form': form})
+
+
+class Filelist(ListView):
+    model = Fileupload
+    template_name = 'files_uploaded.html'
+    context_object_name = 'files'
+    ordering = ['id']
+
+def delete_file(request, pk):
+    if request.method == 'POST':
+        file = Fileupload.objects.get(pk = pk)
+        file.delete()
+    return redirect('files')

@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from Maxapp import views 
+from django.contrib.auth import logout
 
 
 
@@ -17,6 +18,8 @@ urlpatterns = [
     path('post/delete/<int:pk>', DeletePostView.as_view(), name='delete'),
     path('fileupload/', views.upload_file, name='fileupload'),
     path('files/', views.files_uploaded, name='files'),
+    path('uploads/', views.Filelist.as_view(), name='upload'),
+    path('files/<int:pk>/', views.delete_file, name='delete_file'),
 ]
 
 if settings.DEBUG:
